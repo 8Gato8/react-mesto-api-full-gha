@@ -1,0 +1,9 @@
+const CREATED_CODE = 201;
+const INTERNAL_SERVER_ERROR_CODE = 500;
+const CONFLICT = 409;
+
+module.exports = {
+  CREATED_CODE,
+  INTERNAL_SERVER_ERROR_CODE,
+  CONFLICT,
+};
