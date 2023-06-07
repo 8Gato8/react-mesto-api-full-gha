@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use(cors);
+app.use(cors());
 
 app.use('/', router);
 
