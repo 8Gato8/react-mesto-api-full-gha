@@ -5,7 +5,6 @@ const AccessDeniedError = require('../errorClasses/AccessDeniedError');
 const {
   CREATED_CODE,
 } = require('../httpStatusCodes/httpStatusCodes');
-const ConflictError = require('../errorClasses/ConflictError');
 const BadRequestError = require('../errorClasses/BadRequestError');
 
 const getCards = async (req, res, next) => {
@@ -47,10 +46,6 @@ const createCard = async (req, res, next) => {
     const card = await Card.create({ name, link, owner: req.user._id });
     res.status(CREATED_CODE).send(card);
   } catch (err) {
-    if (err.code === 11000) {
-      next(new ConflictError('Пользователь с таким email уже зарегистрирован'));
-      return;
-    }
     if (err.name === 'ValidationError') {
       next(new BadRequestError('Переданы некорректные данные карточки'));
       return;
