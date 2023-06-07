@@ -1,6 +1,6 @@
-const BASE_URL = 'https://api.gato.students.nomoredomains.rocks';
-
 export async function makeRequest(url, method, body, token) {
+
+	const BASE_URL = 'https://api.gato.students.nomoredomains.rocks';
 
 	const headers = {
 		'Content-Type': 'application/json'
