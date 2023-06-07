@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-/* const helmet = require('helmet'); */
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -10,7 +9,7 @@ const router = require('./routes/index');
 const generalErrorHandler = require('./middlewares/generalErrorHandler');
 const nonexistentPathErrorHandler = require('./middlewares/nonexistentPathErrorHandler');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const app = express();
 
@@ -22,11 +21,10 @@ const limiter = rateLimit({
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['https://gato.students.nomoredomains.rocks', 'http://localhost:3000'],
 };
 
 app.use(limiter);
-/* app.use(helmet()); */
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,6 +43,4 @@ app.use(errors());
 app.use('*', nonexistentPathErrorHandler);
 app.use(generalErrorHandler);
 
-app.listen(PORT, () => {
-  console.log(PORT);
-});
+app.listen(PORT);

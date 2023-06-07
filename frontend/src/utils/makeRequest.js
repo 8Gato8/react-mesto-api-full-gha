@@ -1,5 +1,4 @@
-/* const BASE_URL = 'https://api.gato.students.nomoredomains.rocks'; */
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://api.gato.students.nomoredomains.rocks';
 
 export async function makeRequest(url, method, body, token) {
 

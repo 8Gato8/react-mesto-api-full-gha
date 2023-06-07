@@ -102,12 +102,6 @@ const login = async (req, res, next) => {
       { expiresIn: '7d' },
     );
 
-    /* res
-      .cookie('token', token, {
-        maxAge: 3600000,
-      })
-      .end(); */
-
     res.send({ token });
   } catch (err) {
     next(err);

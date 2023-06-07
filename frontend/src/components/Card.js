@@ -6,7 +6,6 @@ function Card({ card, onCardClick, onCardLike, onDeleteClick }) {
 
 	const currentUser = React.useContext(CurrentUserContext);
 
-	/* const isOwn = currentUser._id === card.owner._id; */
 	const isOwn = currentUser._id === `${card.owner.toString()}`;
 
 
