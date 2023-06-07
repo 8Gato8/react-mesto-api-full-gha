@@ -6,6 +6,7 @@ const BadRequestError = require('../errorClasses/BadRequestError');
 const ConflictError = require('../errorClasses/ConflictError');
 const updateUserData = require('../middlewares/updateUserData');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const { CREATED_CODE } = require('../httpStatusCodes/httpStatusCodes');
 
 const getUsers = async (req, res, next) => {
@@ -97,7 +98,7 @@ const login = async (req, res, next) => {
     const user = await User.findUserByCredentials(email, password);
     const token = jwt.sign(
       { _id: user._id },
-      'some-secret-key',
+      NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
       { expiresIn: '7d' },
     );
 
