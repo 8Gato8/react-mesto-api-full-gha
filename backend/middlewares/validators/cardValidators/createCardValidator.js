@@ -1,5 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-const regex = require('../../rexExpForLinkValidation');
+const regex = require('../../regExpForLinkValidation');
 
 module.exports = function () {
   return celebrate({

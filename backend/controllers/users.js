@@ -37,7 +37,7 @@ const getUserById = async (req, res, next) => {
 
 const getCurrentUserInfo = async (req, res, next) => {
   try {
-    const user = await User.findByIdAndUpdate(req.user._id);
+    const user = await User.findById(req.user._id);
     if (!user) {
       throw new NotFoundError('Пользователь с указанным id не найден');
     }
@@ -100,6 +100,12 @@ const login = async (req, res, next) => {
       'some-secret-key',
       { expiresIn: '7d' },
     );
+
+    /* res
+      .cookie('token', token, {
+        maxAge: 3600000,
+      })
+      .end(); */
 
     res.send({ token });
   } catch (err) {
