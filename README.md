@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.108.51
+IP 158.160.108.51
 
 Frontend https://gato.students.nomoredomains.rocks
 
