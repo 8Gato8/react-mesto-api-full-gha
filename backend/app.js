@@ -20,10 +20,6 @@ const limiter = rateLimit({
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
-const corsOptions = {
-  origin: ['https://gato.students.nomoredomains.rocks', 'http://localhost:3000'],
-};
-
 app.use(limiter);
 
 app.use(express.json());
@@ -31,9 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use(cors(corsOptions));
-
-app.options(cors(corsOptions));
+app.use(cors);
 
 app.use('/', router);
 
